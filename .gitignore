@@ -1,0 +1,29 @@
+# Xcode
+#
+# gitignore contributors: remember to update Global/Xcode.gitignore, Objective-C.gitignore & Swift.gitignore
+
+## User settings
+xcuserdata/
+
+## Xcode internals
+DerivedData/
+*.moved-aside
+*.xcuserstate
+
+## Build products
+*.temporary_extract_trace
+*.app
+*.framework
+*.xctest
+*.bundle
+*.dSYM
+
+## Swift Package Manager
+.build/
+.swiftpm
+
+## Other
+*.icedoc
+*.swp
+*~
+*.DS_Store

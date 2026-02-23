@@ -24,6 +24,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		660BDE8F2F4B768A0078C5FF /* TodoList.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = TodoList.xctestplan; sourceTree = "<group>"; };
 		664944552F2AEFFB00227C7F /* TodoList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TodoList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		664944672F2AEFFD00227C7F /* TodoListTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TodoListTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		664944712F2AEFFD00227C7F /* TodoListUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TodoListUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -38,11 +39,6 @@
 		6649446A2F2AEFFD00227C7F /* TodoListTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = TodoListTests;
-			sourceTree = "<group>";
-		};
-		664944742F2AEFFD00227C7F /* TodoListUITests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = TodoListUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -75,9 +71,9 @@
 		6649444C2F2AEFFB00227C7F = {
 			isa = PBXGroup;
 			children = (
+				660BDE8F2F4B768A0078C5FF /* TodoList.xctestplan */,
 				664944572F2AEFFB00227C7F /* TodoList */,
 				6649446A2F2AEFFD00227C7F /* TodoListTests */,
-				664944742F2AEFFD00227C7F /* TodoListUITests */,
 				664944562F2AEFFB00227C7F /* Products */,
 			);
 			sourceTree = "<group>";
@@ -153,9 +149,6 @@
 			dependencies = (
 				664944732F2AEFFD00227C7F /* PBXTargetDependency */,
 			);
-			fileSystemSynchronizedGroups = (
-				664944742F2AEFFD00227C7F /* TodoListUITests */,
-			);
 			name = TodoListUITests;
 			packageProductDependencies = (
 			);
@@ -171,7 +164,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 2610;
-				LastUpgradeCheck = 2610;
+				LastUpgradeCheck = 2620;
 				TargetAttributes = {
 					664944542F2AEFFB00227C7F = {
 						CreatedOnToolsVersion = 26.1.1;
@@ -391,10 +384,11 @@
 		6649447C2F2AEFFD00227C7F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = TodoListIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = QK2D74F48Z;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -422,10 +416,11 @@
 		6649447D2F2AEFFD00227C7F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = TodoListIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = QK2D74F48Z;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;

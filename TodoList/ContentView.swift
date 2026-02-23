@@ -6,81 +6,86 @@
 //
 
 import SwiftUI
-import CoreData
 
 struct ContentView: View {
-    @Environment(\.managedObjectContext) private var viewContext
 
-    @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
-        animation: .default)
-    private var items: FetchedResults<Item>
+    // プロパティ
+    @StateObject private var viewModel = TodoListViewModel()
+    @State private var isShowingAddTodo = false
+    // 選択されたTodoのインデックスを保持（nilなら非表示）
+    @State private var selectedTodoIndex: Int?
 
     var body: some View {
-        NavigationView {
+        NavigationStack {
+            // Todoテーブル
             List {
-                ForEach(items) { item in
-                    NavigationLink {
-                        Text("Item at \(item.timestamp!, formatter: itemFormatter)")
-                    } label: {
-                        Text(item.timestamp!, formatter: itemFormatter)
+                // Todoを表示
+                ForEach(viewModel.todos.indices, id: \.self) { index in
+                    HStack {
+                        // タイトルと余白部分全体をタップ領域にするためのグループ化
+                        HStack {
+                            VStack(alignment: .leading, spacing: 4) {
+                                Text(viewModel.todos[index].title)
+                                    .font(.body)
+                                Text("作成: \(viewModel.todos[index].createdAt.formatted(date: .numeric, time: .shortened))  更新: \(viewModel.todos[index].updatedAt.formatted(date: .numeric, time: .shortened))")
+                                    .font(.caption2)
+                                    .foregroundColor(.secondary)
+                            }
+                            Spacer()
+                        }
+                        // 余白部分もタップ可能にするため、形状を矩形として認識させる
+                        .contentShape(Rectangle())
+                        // Todo詳細画面に遷移
+                        .onTapGesture {
+                            selectedTodoIndex = index
+                        }
+                        
+                        // 丸型チェックボックス
+                        Image(systemName: viewModel.todos[index].isCompleted ? "checkmark.circle.fill" : "circle")
+                            // チェックボックスをタップしてチェックマークをトグル
+                            .onTapGesture {
+                                viewModel.toggleCompleted(at: index)
+                            }
                     }
                 }
-                .onDelete(perform: deleteItems)
+                // Todoを削除
+                .onDelete(perform: viewModel.deleteTodo)
             }
+            // タイトル
+            .navigationTitle("Todo List")
             .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
+                ToolbarItem(placement: .navigationBarLeading) {
                     EditButton()
                 }
-                ToolbarItem {
-                    Button(action: addItem) {
-                        Label("Add Item", systemImage: "plus")
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    // Todo追加ボタン（＋）
+                    Button {
+                        isShowingAddTodo = true
+                    } label: {
+                        Image(systemName: "plus")
                     }
                 }
             }
-            Text("Select an item")
-        }
-    }
-
-    private func addItem() {
-        withAnimation {
-            let newItem = Item(context: viewContext)
-            newItem.timestamp = Date()
-
-            do {
-                try viewContext.save()
-            } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+            // Todo追加ボタン（＋）押下時、Todo追加画面表示
+            .sheet(isPresented: $isShowingAddTodo) {
+                AddTodoView(viewModel: viewModel)
             }
-        }
-    }
-
-    private func deleteItems(offsets: IndexSet) {
-        withAnimation {
-            offsets.map { items[$0] }.forEach(viewContext.delete)
-
-            do {
-                try viewContext.save()
-            } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+            // Todoのタイトルテキスト押下時、Todo詳細画面表示
+            .fullScreenCover(item: Binding<IdentifiableInt?>(
+                get: { selectedTodoIndex.map { IdentifiableInt(id: $0) } },
+                set: { selectedTodoIndex = $0?.id }
+            )) { identifiableIndex in
+                TodoTextView(viewModel: viewModel, index: identifiableIndex.id)
             }
         }
     }
 }
 
-private let itemFormatter: DateFormatter = {
-    let formatter = DateFormatter()
-    formatter.dateStyle = .short
-    formatter.timeStyle = .medium
-    return formatter
-}()
+// 画面遷移のためのラッパー
+struct IdentifiableInt: Identifiable {
+    let id: Int
+}
 
 #Preview {
-    ContentView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+    ContentView()
 }
