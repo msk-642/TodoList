@@ -34,20 +34,32 @@ SwiftUIとMVVMアーキテクチャを採用した、モダンな設計のTodo�
   - 「新機能を入れたら別の場所が動かなくなった」というデグレ（退化）を防ぐため、自動テストの仕組みを構築しています。
 
 ## 📸 スクリーンショット / デモ
-- **メイン画面（初回起動）**:
-<img width="1206" height="2622" alt="simulator_screenshot_71D3C98D-C6FD-4E4A-B83E-FD7930A9DC58" src="https://github.com/user-attachments/assets/4f3c4517-070f-4847-8133-72d5fef064b4" />
-- **Todo追加画面**:
-<img width="1206" height="2622" alt="simulator_screenshot_63839CC0-E89E-4789-968B-EC1B450F07A5" src="https://github.com/user-attachments/assets/c0f66424-eb91-4745-a009-a543809e74a8" />
- - メイン画面からTodo追加画面へ遷移 ➡️ Todo追加
-![TodoApp-Main-TodoAdd](https://github.com/user-attachments/assets/91231861-9749-4b44-ab8d-ddf689cc9e6b)
+- **メイン画面（初回起動）**
+<img width="250" alt="simulator_screenshot_71D3C98D-C6FD-4E4A-B83E-FD7930A9DC58" src="https://github.com/user-attachments/assets/4f3c4517-070f-4847-8133-72d5fef064b4" />
 
-- **Todo詳細画面（Todo新規作成後）**:
-<img width="1206" height="2622" alt="simulator_screenshot_2222CBC4-062E-47DA-A3FD-1E12E54F750E" src="https://github.com/user-attachments/assets/10ecff6a-1f0a-4afb-a78d-c317761e5a82" />
- - Todoの詳細入力後保存 ➡️ メイン画面でTodoの更新時間が更新されていることを確認
-![TodoApp-TodoText-Save](https://github.com/user-attachments/assets/018f37b4-0176-4dc6-a512-fe5a50a40dd9)
 
- - Todo削除後アプリ終了 ➡️ アプリ再起動してTodoの状態が保存されていることを確認
-![TodoApp-TodoDelete-Save](https://github.com/user-attachments/assets/027a6572-3279-4596-a1e5-40ae8d96f2a3)
+- **Todo追加画面**
+<img width="250" alt="simulator_screenshot_63839CC0-E89E-4789-968B-EC1B450F07A5" src="https://github.com/user-attachments/assets/c0f66424-eb91-4745-a009-a543809e74a8" />
+
+
+- **メイン画面からTodo追加画面へ遷移 ➡️ Todo追加**
+<img src="https://github.com/user-attachments/assets/91231861-9749-4b44-ab8d-ddf689cc9e6b" width="250">
+
+
+- **Todo詳細画面（Todo新規作成後）**
+<img width="250" alt="simulator_screenshot_2222CBC4-062E-47DA-A3FD-1E12E54F750E" src="https://github.com/user-attachments/assets/10ecff6a-1f0a-4afb-a78d-c317761e5a82" />
+
+ 
+- **Todoの詳細入力後保存 ➡️ メイン画面でTodoの更新時間が更新されていることを確認**
+<img src="https://github.com/user-attachments/assets/018f37b4-0176-4dc6-a512-fe5a50a40dd9" width="250">
+
+
+- **Todo削除後アプリ終了 ➡️ アプリ再起動してTodoの状態が保存されていることを確認**
+<img src="https://github.com/user-attachments/assets/027a6572-3279-4596-a1e5-40ae8d96f2a3" width="250">
+
+
+- **ユニットテスト実行結果OK**
+<img width="250" src="https://github.com/user-attachments/assets/dffaaaf4-2dbf-493b-bd69-e8b0daf664c8" />
 
 
 ## 📂 プロジェクト構造
